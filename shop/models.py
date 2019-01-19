@@ -1,6 +1,18 @@
 from django.db import models
 
+class Category(models.Model):
+    name = models.CharField(max_length=200,
+                            db_index=True)
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 class Product(models.Model):
+    category = models.ForeignKey(Category,
+                                 null=True,
+                                 related_name='products',
+                                 on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=100, unique=True, db_index = True)
     description = models.TextField(blank=True)

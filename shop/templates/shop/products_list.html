@@ -1,6 +1,13 @@
-<h2>Hello from products</h2>
+  <ul>
+    <li>all</li>
+    {% for category in categories %}
+       <li> {{ category.name }} </li>
+    {% endfor %}
+  </ul>
+<h1>products</h1>
 {% for product in products %}
-  <p>{{ product.name }}</p>
+  <h2>{{ product.name }}</h2>
   <p>{{ product.description }}</p>
   <img width="200" src="{{ product.main_image.url }}" alt="">
+  <hr />
 {% endfor %}
