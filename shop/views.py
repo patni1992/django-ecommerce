@@ -16,4 +16,9 @@ def product_list(request, category_name=None):
         'products': products, 
         'categories': categories
         })
+
+
+def product_item(request, id, slug):
+    return render(request,'shop/product_item.html')
+    
     
