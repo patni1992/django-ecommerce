@@ -19,6 +19,7 @@ def product_list(request, category_name=None):
 
 
 def product_item(request, id, slug):
-    return render(request,'shop/product_item.html')
+    product = get_object_or_404(Product, pk=id)
+    return render(request,'shop/product_item.html', {'product': product})
     
     
