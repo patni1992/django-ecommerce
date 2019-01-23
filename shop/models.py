@@ -18,6 +18,7 @@ class Product(models.Model):
                                  on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=100, unique=True, db_index = True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     description = models.TextField(blank=True)
     main_image = models.ImageField(upload_to='products_upload/', null=True) 
     active = models.BooleanField(default=True)
