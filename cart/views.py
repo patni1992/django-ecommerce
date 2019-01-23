@@ -5,7 +5,7 @@ from shop.models import Product
 from .cart import Cart
 
 def detail(request):
-    cart = Cart()
+    cart = Cart(request)
     return render(request,'cart/detail.html', {'cart': cart})
     
 
