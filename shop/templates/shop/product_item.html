@@ -16,12 +16,19 @@
           </div>
         </div>
         <div class="col-lg-9">
-
           <div class="card mt-4">
             <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
             <div class="card-body">
-              <h3 class="card-title">{{ product.name }}</h3>
-              <h4>$24.99</h4>
+              <div class="row">
+                  <h3 class="col-lg-6 card-title">
+                      {{ product.name }}
+                  </h3>
+                  <form class="col-lg-6" action="{% url "cart:add" product.id %}" method="post">
+                      {% csrf_token %}
+                      <input class="btn btn-primary float-right" type="submit" value="Add to cart">
+                  </form>
+              </div>
+              <h4>${{ product.price }}</h4>
               <p class="card-text">{{ product.description }}</p>
             </div>
           </div>

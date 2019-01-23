@@ -59,7 +59,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active text-white">
-                        Shopping cart is empty
+                     {% with product_items=cart|length %}
+                         {% if product_items %}
+                             {{ product_items }} item{{ product_items|pluralize }}
+                            ${{ cart.get_total_price }}
+                             {% else %}
+                                Your cart is empty.
+                         {% endif %}
+                    {% endwith %}
                     </li>
                 </ul>
             </div>
