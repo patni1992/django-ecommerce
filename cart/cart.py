@@ -51,7 +51,7 @@ class Cart:
     def __next__(self):
         if self.current < self.length:
             product = self.products[self.current]
-            product.quantity = self.items[str(product.id)].quantity
+            product.quantity = self.items[str(product.id)]['quantity']
             product.total_price = product.price * product.quantity
             self.current+=1
             return product
