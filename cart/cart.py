@@ -21,6 +21,12 @@ class Cart:
 
         self.save()
     
+    def update(self, product, quantity):
+        product_id = str(product.id)
+        if product_id in self.items:
+            self.items[product_id]['quantity']=int(quantity)
+            self.save()
+    
     def remove(self, product):
         if item in self.items:
             self.items[str(product.id)]-=1
