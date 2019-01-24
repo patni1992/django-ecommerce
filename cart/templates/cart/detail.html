@@ -1,13 +1,18 @@
  {% extends "shop/base.html" %} {% block content %}
 <div class="container">
     <div class="card">
+            <div class="card-header bg-dark text-light">
+                    Shopping cart
+                    <!-- <a href="" class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a> -->
+                    <div class="clearfix"></div>
+                </div>
         <table class="table table-hover shopping-cart-wrap">
             <thead class="text-muted">
                 <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col" width="120">Quantity</th>
-                    <th scope="col" width="120">Price</th>
-                    <th scope="col" width="200" class="text-right">Action</th>
+                    <th scope="col" style="width: 52.66%">Product</th>
+                    <th scope="col" >Quantity</th>
+                    <th scope="col" >Price</th>
+                    <th scope="col" >Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,16 +45,32 @@
                             <small class="text-muted">(${{ item.price }})</small>
                         </div>
                     </td>
-                    <td class="text-right">
-                        <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist">
-                            <i class="fa fa-heart"></i>
-                        </a>
+                    <td >
                         <a href="" class="btn btn-outline-danger"> × Remove</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <div class="card-footer">
+                <!-- <div class="coupon col-md-5 col-sm-5  pull-left">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="cupone code">
+                        </div>
+                        <div class="col-6">
+                            <input type="submit" class="btn btn-default" value="Use cupone">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="pull-right">
+                    <a href="" class="btn btn-success pull-right">Checkout</a>
+                    <a href="" class="btn btn-outline-secondary pull-right mx-3">Update shopping cart</a>
+                    <div class="pull-right mt-2">
+                        Total price: <b>${{ cart.get_total_price }}</b>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 {% endblock %}
