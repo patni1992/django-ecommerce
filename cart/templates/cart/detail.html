@@ -49,7 +49,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="{% url "cart:remove" item.id%}" class="btn btn-outline-danger"> × Remove</a>
+                            <a href="{% url "cart:remove" item.id%}" class="btn btn-outline-danger">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -67,7 +67,7 @@
                     </div>
                 </div> -->
                 <div class="pull-right">
-                    <button type="button"  class="btn btn-success pull-right">Checkout</button>
+                    <a href="{% url "order:order" %}" class="btn btn-success pull-right">Checkout</a>
                     <button type="submit" class="btn btn-outline-secondary pull-right mx-3">Update shopping cart</button>
                     <div class="pull-right mt-2">
                         Total price:
