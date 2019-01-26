@@ -28,8 +28,7 @@ class Cart:
             self.save()
     
     def remove(self, product):
-        if item in self.items:
-            self.items[str(product.id)]-=1
+            self.items.pop(str(product.id), None)
             self.save()
     
     def save(self):

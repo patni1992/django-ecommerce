@@ -49,7 +49,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="" class="btn btn-outline-danger"> × Remove</a>
+                            <a href="{% url "cart:remove" item.id%}" class="btn btn-outline-danger"> × Remove</a>
                         </td>
                     </tr>
                     {% endfor %}

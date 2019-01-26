@@ -29,8 +29,11 @@ def update(request):
     return redirect('cart:detail')
 
 
-def remove(request):
-     return JsonResponse({'data':'remove'})
+def remove(request, product_id):
+     product = get_object_or_404(Product, pk=product_id)
+     cart = Cart(request)
+     cart.remove(product)
+     return redirect('cart:detail')
 
 
 
