@@ -1,12 +1,8 @@
 
 {% extends "shop/base.html" %}
-<!-- Page Content -->
 {% block content %}
-    <!-- Page Content -->
     <div class="container">
-
       <div class="row">
-
         <div class="col-lg-3">
           <h1 class="my-4">Shop Name</h1>
           <div class="list-group">
@@ -17,7 +13,9 @@
         </div>
         <div class="col-lg-9">
           <div class="card mt-4">
-            <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+            <div class="text-center"> 
+                <img  style="max-height: 400px" src="{{ product.main_image.url }}" alt="">
+            </div>
             <div class="card-body">
               <div class="row">
                   <h3 class="col-lg-6 card-title">
@@ -33,9 +31,6 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-    <!-- /.container -->
 {% endblock %}
