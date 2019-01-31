@@ -17,8 +17,11 @@ def product_list(request, category_name=None):
         'categories': categories
         })
 
-
 def product_item(request, id, slug):
+    product = get_object_or_404(Product, pk=id)
+    return render(request,'shop/product_item.html', {'product': product})
+
+def find_state(request, id, slug):
     product = get_object_or_404(Product, pk=id)
     return render(request,'shop/product_item.html', {'product': product})
     

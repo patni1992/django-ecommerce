@@ -1,5 +1,6 @@
 from django.db import models
 from shop.models import Product
+from cities_light.models import Country, City
 
 class Order(models.Model):
     first_name = models.CharField(max_length=40)
@@ -8,7 +9,8 @@ class Order(models.Model):
     email = models.EmailField()
     address = models.CharField(max_length=250)
     postal_code = models.CharField(max_length=20)
-    city = models.CharField(max_length=80)
+    city = models.ForeignKey(City, on_delete=models.PROTECT, null=True)
+    country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
