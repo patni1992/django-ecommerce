@@ -2,12 +2,17 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import OrderForm, CustomFieldForm
 from cities_light.models import City
+from django.contrib import messages 
 
 def order(request):
     if request.method == "POST":
-        return JsonResponse({'order':'23423423'})
-    
-    form = CustomFieldForm()
+        form = CustomFieldForm(request.POST)
+        if form.is_valid():
+            order = request.POST.copy()
+            order.pop('csrfmiddlewaretoken', None)
+            return JsonResponse({'data':order})
+    else: 
+        form = CustomFieldForm()
     return render(request,'order/order.html', {'form':  form})
 
 def load_cities(request):
