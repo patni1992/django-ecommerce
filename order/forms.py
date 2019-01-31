@@ -1,6 +1,6 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
+from crispy_forms.layout import Layout, Submit, Row, Column,  ButtonHolder, HTML
 from .models import Order
 from cities_light.models import City
 
@@ -23,7 +23,15 @@ class CustomFieldForm(OrderForm):
                 css_class='form-row'
             ),
             'email',
-            'address',  
-            'country',
-            'city'          
+            'address', 
+             Row(
+                Column('country', css_class='form-group col-md-4 mb-0 pr-3'),
+                Column('city', css_class='form-group col-md-4 mb-0 pl-3'),
+                Column('postal_code', css_class='form-group col-md-4 mb-0 pl-3'),
+                css_class='form-row'
+            ),
+            ButtonHolder(  
+            HTML("<hr class='mb-4'>"),
+            HTML("<button class='btn btn-primary btn-lg btn-block' type='submit'> <i class='fa fa-credit-card'></i> Place order</button>") ),
         )
+
