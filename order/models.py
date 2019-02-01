@@ -18,7 +18,20 @@ class Order(models.Model):
         return 'Order {}'.format(self.id)
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
+    
+    def create_mail(self, cart):
+        mail = {}
+        cartItems = ''
 
+        for item in cart:
+                cartItems += f"product: {item} quantity: {item.quantity}\n"
+
+        mail['from_email'] = 'admin@myshop.com'
+        mail['recipient_list'] = [self.email]
+        mail['subject'] =  f"Order nr. {self.id}"
+        mail['message'] = f"Dear {self.first_name},\n\nYou have successfully placed an order.\nYour order id is {self.id}. \n\n{cartItems}"
+
+        return mail
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,

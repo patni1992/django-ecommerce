@@ -5,6 +5,7 @@ from random import randint
 from django.core.mail import send_mail
 from cities_light.models import City
 from django.contrib import messages 
+from .models import OrderItem
 from cart.cart import Cart
 
 def order(request):
@@ -12,22 +13,21 @@ def order(request):
         form = CustomFieldForm(request.POST)
         if form.is_valid():
             cart = Cart(request)
-            cartItems = ''
-            order = request.POST.copy()
-            order.pop('csrfmiddlewaretoken', None)
-            order['id'] = randint(0, 999999)
+            order = form.save()
             
             for item in cart:
-                cartItems += f"product: {item} quantity: {item.quantity}\n"
-            
-            order['items'] = cartItems
-            subject = f"Order nr. {order['id']}"
-            message = f"Dear {order['first_name']},\n\nYou have successfully placed an order.\nYour order id is {order['id']}. \n\n{cartItems}"
-            send_mail(subject, message, 'admin@myshop.com', [order['email']])
+                OrderItem.objects.create(order=order,
+                                         product=item,
+                                         price=item.price,
+                                         quantity=item.quantity)
 
+            mail = order.create_mail(cart)
+            send_mail(**mail)
             cart.clear()
 
-            return JsonResponse({'data':order})
+            return render(request,
+                          'order/receipt.html',
+                          {'order': order})
     else: 
         form = CustomFieldForm()
     return render(request,'order/order.html', {'form':  form})
