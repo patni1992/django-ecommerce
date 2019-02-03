@@ -8,7 +8,7 @@
       <div class="list-group">
         <a href="/" class="list-group-item"> All</a>
         {% for category in categories %}
-        <a href="/{{ category.name }}" class="list-group-item">{{ category.name }}</a>
+        <a href="/{{ category.slug }}" class="list-group-item">{{ category.name }}</a>
         {% endfor %}
       </div>
     </div>
