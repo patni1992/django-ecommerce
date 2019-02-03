@@ -27,7 +27,7 @@
                   </form>
               </div>
               <h4>${{ product.price }}</h4>
-              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">{{ product.description | safe }}</p>
             </div>
           </div>
         </div>
