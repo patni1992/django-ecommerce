@@ -40,6 +40,6 @@ class CustomFieldForm(OrderForm):
             ),
             ButtonHolder(  
             HTML("<hr class='mb-4'>"),
-            HTML("<button class='btn btn-primary btn-lg btn-block' type='submit'> <i class='fa fa-credit-card'></i> Place order</button>") ),
+            HTML("<button class='btn btn-primary btn-block' type='submit'> <i class='fa fa-credit-card'></i> Place order</button>") ),
         )
 
