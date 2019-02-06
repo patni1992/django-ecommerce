@@ -18,8 +18,15 @@ def product_list(request, category_slug=None):
         })
 
 def product_item(request, id, slug):
+    random_products = Product.objects.all().exclude(pk=id).order_by('?')[:6]
     product = get_object_or_404(Product, pk=id)
-    return render(request,'shop/product_item.html', {'product': product})
+    
+    context = {
+        'product': product, 
+        'random_products': random_products
+        }
+
+    return render(request,'shop/product_item.html', context)
 
 def find_state(request, id, slug):
     product = get_object_or_404(Product, pk=id)
