@@ -1,14 +1,13 @@
-{% extends "shop/base.html" %}
-{% load static %}
-{% block content %}
+{% extends "shop/base.html" %} {% load static %} {% block content %}
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
       <h1 class="my-4">Shop</h1>
-      <div class="list-group">
+      <div class="list-group mb-4">
         <a href="/" class="list-group-item"> All</a>
         {% for category in categories %}
-        <a href="/{{ category.slug }}" class="list-group-item">{{ category.name }}</a>
+        <a href="/{{ category.slug }}" class="list-group-item">{{ category.name }}
+        </a>
         {% endfor %}
       </div>
     </div>
@@ -33,14 +32,17 @@
         <div class="col-md-6 mb-4">
           <div class="card h-100">
             <a href="/{{ product.id }}/{{ product.slug }}/">
-              <img class="card-img-top" src="{{ product.main_image.url }}" alt="">
+              <img class="card-img-top" src="{{ product.main_image.url }}" alt="" />
             </a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/{{ product.id }}/{{ product.slug }}">{{ product.name }}</a>
+                <a href="/{{ product.id }}/{{ product.slug }}">{{ product.name }}
+                </a>
               </h4>
               <h5>${{ product.price }}</h5>
-              <p class="card-text">{{ product.description|truncatechars:180 | striptags   }}</p>
+              <p class="card-text">
+                {{ product.description | truncatechars:180 | striptags }}
+              </p>
             </div>
           </div>
         </div>
