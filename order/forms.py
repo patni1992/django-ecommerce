@@ -26,16 +26,16 @@ class CustomFieldForm(OrderForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Row(
-                Column('first_name', css_class='form-group col-md-6 mb-0 pr-3'),
-                Column('last_name', css_class='form-group col-md-6 mb-0 pl-3'),
+                Column('first_name',  css_class='form-group col-md-6 mb-0 '),
+                Column('last_name', css_class='form-group col-md-6 mb-0 '),
                 css_class='form-row'
             ),
             'email',
             'address', 
              Row(
-                Column('country', css_class='form-group col-md-4 mb-0 pr-3'),
-                Column('city', css_class='form-group col-md-4 mb-0 pl-3'),
-                Column('postal_code', css_class='form-group col-md-4 mb-0 pl-3'),
+                Column('country', css_class='form-group col-md-4 mb-0 '),
+                Column('city', css_class='form-group col-md-4 mb-0 '),
+                Column('postal_code', css_class='form-group col-md-4 mb-0 '),
                 css_class='form-row'
             ),
             ButtonHolder(  
